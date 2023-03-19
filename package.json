@@ -8,7 +8,7 @@
     "realty-server"
   ],
   "scripts": {
-    "co": "",
+    "cm": "cz",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
@@ -25,7 +25,13 @@
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
     "@s-ui/mono": "^2.34.0",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "prisma": "^4.11.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
