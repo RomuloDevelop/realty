@@ -1,0 +1,31 @@
+{
+  "name": "realty",
+  "version": "1.0.0",
+  "description": "Realty monorepo",
+  "main": "index.js",
+  "workspaces": [
+    "realty-app",
+    "realty-server"
+  ],
+  "scripts": {
+    "co": "",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "keywords": [
+    "realty",
+    "typescript",
+    "Nest.js",
+    "Next.js",
+    "prisma"
+  ],
+  "author": "Rómulo Corona",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.4.4",
+    "@commitlint/config-conventional": "^17.4.4",
+    "@s-ui/mono": "^2.34.0",
+    "husky": "^8.0.3",
+    "prisma": "^4.11.0"
+  }
+}
