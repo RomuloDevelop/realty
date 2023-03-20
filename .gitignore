@@ -8,6 +8,7 @@ realty-app/.next/
 realty-app/out/
 realty-app/*.tsbuildinfo
 realty-app/next-env.d.ts
+.env
 
 # Logs
 logs

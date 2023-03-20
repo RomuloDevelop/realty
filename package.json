@@ -8,7 +8,7 @@
     "realty-server"
   ],
   "scripts": {
-    "cm": "cz",
+    "commit": "cz",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install"
   },
@@ -33,5 +33,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@prisma/client": "^4.11.0"
   }
 }
