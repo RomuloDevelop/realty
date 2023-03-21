@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
+model Users {
   id Int @default(autoincrement()) @id
   email String  @unique
   first_name  String
@@ -19,11 +19,105 @@ model User {
   address String
   phone String
   roleId Int
-  role UserRole @relation(fields: [roleId], references: [id])
+  role UserRoles @relation(fields: [roleId], references: [id])
+  properties Properties[]
+  appointmentClient Appointments[] @relation("client")
+  appointmentAgent Appointments[] @relation("agent")
 }
 
-model UserRole {
+model UserRoles {
   id Int @default(autoincrement()) @id
   description String
-  users User[]
+  users Users[]
+}
+
+model Properties {
+  id Int @default(autoincrement()) @id
+  agentId Int
+  description String
+  area Int
+  price Decimal
+  latitude Decimal
+  longitude Decimal
+  address String
+  mis_number Int
+  zipCode Int
+  baths Int
+  bedrooms Int
+  propertyType Int
+  countryId Int
+  provinceId Int
+  cityId Int
+  neighbourhoodId Int
+  agent Users @relation(fields: [agentId], references: [id])
+  type PropertyTypes @relation(fields: [propertyType], references: [id])
+  country Countries @relation(fields: [countryId], references: [id])
+  province Provinces @relation(fields: [provinceId], references: [id])
+  city Cities @relation(fields: [cityId], references: [id])
+  neighbourhood Neighbourhoods @relation(fields: [neighbourhoodId], references: [id])
+  appointment Appointments[]
+  propertyImages PropertyImages[]
+}
+
+model PropertyTypes {
+  id Int @default(autoincrement()) @id
+  parentId Int?
+  parent PropertyTypes? @relation("types", fields: [parentId], references: [id])
+  property Properties[]
+  childs PropertyTypes[] @relation("types")
+}
+
+model PropertyImages {
+  id Int @default(autoincrement()) @id
+  propertyId Int
+  name String
+  url String
+  property Properties @relation(fields: [propertyId], references: [id])
+}
+
+model Countries {
+  id Int @default(autoincrement()) @id
+  name String
+  provinces Provinces[]
+  properties Properties[]
+}
+
+model Provinces {
+  id Int @default(autoincrement()) @id
+  name String
+  countryId Int
+  country Countries @relation(fields: [countryId], references: [id])
+  city Cities[]
+  properties Properties[]
+}
+
+model Cities {
+  id Int @default(autoincrement()) @id
+  name String
+  provinceId Int
+  province Provinces @relation(fields: [provinceId], references: [id])
+  neighbourhood Neighbourhoods[]
+  properties Properties[]
+}
+
+model Neighbourhoods {
+  id Int @default(autoincrement()) @id
+  name String
+  cityId Int
+  city Cities @relation(fields: [cityId], references: [id])
+  properties Properties[]
+}
+
+model Appointments {
+  id Int @default(autoincrement()) @id
+  clientId Int
+  agentId Int
+  propertyId Int
+  date DateTime
+  comment String
+  email String?
+  phone String?
+  client Users @relation("client", fields: [agentId], references: [id])
+  agent Users @relation("agent", fields: [clientId], references: [id])
+  property Properties @relation(fields: [propertyId], references: [id])
 }
