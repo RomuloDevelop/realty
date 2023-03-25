@@ -1,14 +1,18 @@
 # compiled output
-/node_modules
-realty-server/node_modules
-realty-server/dist/
-realty-app/node_modules
-realty-app/build/
-realty-app/.next/
-realty-app/out/
-realty-app/*.tsbuildinfo
-realty-app/next-env.d.ts
+dist
+node_modules
+build
+.next
+out
+*.tsbuildinfo
+next-env.d.ts
+
+# configs
 .env
+states.json
+counties.json
+cities.json
+neighbourhoods.json
 
 # Logs
 logs

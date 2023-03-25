@@ -1,18 +1,29 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
-import { AuthModule } from './auth/auth.module';
-import { JwtStrategy } from './auth/jwt.strategy';
+import { ConfigModule } from '@nestjs/config';
+import { ModulesModule } from './modules/modules.module';
 import { APP_GUARD } from '@nestjs/core';
-import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
+import { RolesGuard } from './common/guards/roles.guard';
+import { JwtStrategy } from './common/strategies/jwt.strategy';
 
 @Module({
-  imports: [UsersModule, CommonModule, AuthModule],
+  imports: [
+    CommonModule,
+    ModulesModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
+  ],
   providers: [
     JwtStrategy,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
+    },
+    {
+      provide: APP_GUARD,
+      useClass: RolesGuard,
     },
   ],
 })

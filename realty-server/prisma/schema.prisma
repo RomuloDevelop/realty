@@ -33,7 +33,7 @@ model UserRoles {
 
 model Properties {
   id Int @default(autoincrement()) @id
-  agentId Int
+  agentId Int?
   description String
   area Int
   price Decimal
@@ -45,13 +45,13 @@ model Properties {
   baths Int
   bedrooms Int
   propertyType Int
-  countryId Int
+  countyId Int
   provinceId Int
   cityId Int
   neighbourhoodId Int
-  agent Users @relation(fields: [agentId], references: [id])
+  agent Users? @relation(fields: [agentId], references: [id])
   type PropertyTypes @relation(fields: [propertyType], references: [id])
-  country Countries @relation(fields: [countryId], references: [id])
+  country Counties @relation(fields: [countyId], references: [id])
   province Provinces @relation(fields: [provinceId], references: [id])
   city Cities @relation(fields: [cityId], references: [id])
   neighbourhood Neighbourhoods @relation(fields: [neighbourhoodId], references: [id])
@@ -75,27 +75,31 @@ model PropertyImages {
   property Properties @relation(fields: [propertyId], references: [id])
 }
 
-model Countries {
-  id Int @default(autoincrement()) @id
-  name String
-  provinces Provinces[]
-  properties Properties[]
-}
-
 model Provinces {
   id Int @default(autoincrement()) @id
   name String
-  countryId Int
-  country Countries @relation(fields: [countryId], references: [id])
-  city Cities[]
+  abbreviation String @unique
+  counties Counties[]
+  properties Properties[]
+}
+
+model Counties {
+  id Int @default(autoincrement()) @id
+  name String
+  fipscode String @unique
+  stateAbbreviation String
+  province Provinces @relation(fields: [stateAbbreviation], references: [abbreviation])
+  cities Cities[]
+  neighbourhoods Neighbourhoods[]
   properties Properties[]
 }
 
 model Cities {
-  id Int @default(autoincrement()) @id
+  id Int @id
   name String
-  provinceId Int
-  province Provinces @relation(fields: [provinceId], references: [id])
+  countyFips String
+  stateAbbreviation String
+  county Counties @relation(fields: [countyFips], references: [fipscode])
   neighbourhood Neighbourhoods[]
   properties Properties[]
 }
@@ -104,7 +108,10 @@ model Neighbourhoods {
   id Int @default(autoincrement()) @id
   name String
   cityId Int
+  countyFips String
+  stateAbbreviation String
   city Cities @relation(fields: [cityId], references: [id])
+  county Counties @relation(fields: [countyFips], references: [fipscode])
   properties Properties[]
 }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, Users } from '@prisma/client';
-import { Paginator } from '../../types/paginator';
-import { PrismaService } from '../services/prisma/prisma.service';
+import { Paginator } from '../../../types/paginator';
+import { PrismaService } from '../../common/database/prisma.service';
 
 @Injectable()
 export class UsersService {
@@ -32,10 +32,8 @@ export class UsersService {
     });
   }
 
-  async createUser(data: Prisma.UsersCreateInput): Promise<Users> {
-    return this.prisma.users.create({
-      data,
-    });
+  async createUser(data: Prisma.UsersCreateManyInput) {
+    return this.prisma.users.create({ data });
   }
 
   async updateUser(params: {
