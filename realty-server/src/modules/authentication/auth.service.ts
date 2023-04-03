@@ -3,8 +3,8 @@ import { Injectable } from '@nestjs/common';
 import { UsersService } from 'src/modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { Users } from '@prisma/client';
-import { Hash } from 'crypto';
 import Hashing from 'src/common/utils/hashing';
+import { Role } from 'src/common/constants';
 
 @Injectable()
 export class AuthService {
@@ -42,6 +42,7 @@ export class AuthService {
   }
 
   async register(data: Users) {
+    data.roleId = Role.Client;
     data.password = await Hashing.hashKey(data.password);
     const { password, ...result } = await this.usersService.createUser(data);
     return result;

@@ -51,7 +51,7 @@ model Properties {
   neighbourhoodId Int
   agent Users? @relation(fields: [agentId], references: [id])
   type PropertyTypes @relation(fields: [propertyType], references: [id])
-  country Counties @relation(fields: [countyId], references: [id])
+  county Counties @relation(fields: [countyId], references: [id])
   province Provinces @relation(fields: [provinceId], references: [id])
   city Cities @relation(fields: [cityId], references: [id])
   neighbourhood Neighbourhoods @relation(fields: [neighbourhoodId], references: [id])
@@ -62,6 +62,7 @@ model Properties {
 model PropertyTypes {
   id Int @default(autoincrement()) @id
   parentId Int?
+  description String
   parent PropertyTypes? @relation("types", fields: [parentId], references: [id])
   property Properties[]
   childs PropertyTypes[] @relation("types")
