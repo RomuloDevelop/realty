@@ -2,7 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { UsersService } from 'src/modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
-import { Users } from '@prisma/client';
+import { User } from '@prisma/client';
 import Hashing from 'src/common/utils/hashing';
 import { Role } from 'src/common/constants';
 
@@ -16,7 +16,7 @@ export class AuthService {
   async validateUser(
     email: string,
     password: string,
-  ): Promise<Omit<Users, 'password'> | null> {
+  ): Promise<Omit<User, 'password'> | null> {
     const user = await this.usersService.user({ email });
 
     if (!user) return null;
@@ -34,14 +34,14 @@ export class AuthService {
     return null;
   }
 
-  async login(user: Users) {
+  async login(user: User) {
     const { id, ...payload } = { ...user, sub: user.id };
     return {
       access_token: this.jwtService.sign(payload),
     };
   }
 
-  async register(data: Users) {
+  async register(data: User) {
     data.roleId = Role.Client;
     data.password = await Hashing.hashKey(data.password);
     const { password, ...result } = await this.usersService.createUser(data);

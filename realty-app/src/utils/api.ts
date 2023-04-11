@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { TokenUtils } from './tokenUtils'
 
 interface Params {
   url: string
@@ -10,11 +11,16 @@ interface Params {
 
 const TIMEOUT_FETCH = 180000
 
-let API_URL = process.env.API_URL
+let API_URL = process.env.REACT_APP_API_URL
 
-const api = async (
-  { url, headers, method, body, params }: Params
-) => {
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    return Promise.reject(error)
+  }
+)
+
+const api = async ({ url, headers, method, body, params }: Params) => {
   if (url[0] === '/') {
     url = url.slice(1)
   }
@@ -24,7 +30,7 @@ const api = async (
     'Content-Type': 'application/json',
   }
 
-  const token = localStorage.get('TOKEN')
+  const token = TokenUtils.getToken()
 
   if (token) {
     defaultHeaders.Authorization = `Bearer ${token}`
@@ -34,7 +40,7 @@ const api = async (
 
   const axiosParameters = {
     url: `${API_URL}/${url}`,
-    method: method,
+    method,
     headers: {
       ...defaultHeaders,
       ...headers,
@@ -44,64 +50,51 @@ const api = async (
     data: body,
     params,
   }
-  axios.interceptors.response.use(
-    (response) => response,
-    (error) => {
-      return Promise.reject(error)
-      /* end Crashlytics*/
-    }
-  )
 
-  return new Promise(function (resolve, reject) {
+  return new Promise((resolve, reject) => {
     axios(axiosParameters)
-      .then(function (response) {
+      .then((response) => {
         resolve(response)
       })
-      .catch(function (error) {
+      .catch((error) => {
         reject(error.response.data)
       })
   })
 }
 
-const get = (
-  { url, headers, params }: Params
-): Promise<any> => {
+const get = ({ url, headers, params }: Params): Promise<any> => {
   return api({ url, headers, method: 'get', params })
 }
 
-const post = (
-  { url, headers, body, params }: Params
-): Promise<any> => {
+const post = ({ url, headers, body, params }: Params): Promise<any> => {
   return api({ url, headers, method: 'post', body, params })
 }
 
-const put = (
-  { url, headers, body, params }: Params,
-): Promise<any> => {
+const put = ({ url, headers, body, params }: Params): Promise<any> => {
   return api({ url, headers, method: 'put', body, params })
 }
-const remove = (
-  { url, headers, body, params }: Params
-): Promise<any> => {
+const remove = ({ url, headers, body, params }: Params): Promise<any> => {
   return api({ url, headers, method: 'delete', body, params })
 }
 
-const formData = (
-  { url, body, headers = {}, method, params }: Params
-): Promise<any> => {
-  return api(
-    {
-      url,
-      body,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'multipart/form-data',
-        ...headers,
-      },
-      method,
-      params,
-    }
-  )
+const formData = ({
+  url,
+  body,
+  headers = {},
+  method,
+  params,
+}: Params): Promise<any> => {
+  return api({
+    url,
+    body,
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'multipart/form-data',
+      ...headers,
+    },
+    method,
+    params,
+  })
 }
 
 export { post, get, put, formData, remove }

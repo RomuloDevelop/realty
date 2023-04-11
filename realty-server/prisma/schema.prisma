@@ -10,122 +10,134 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id Int @default(autoincrement()) @id
-  email String  @unique
-  first_name  String
-  last_name String?
-  password String?
-  address String
-  phone String
-  roleId Int
-  role UserRoles @relation(fields: [roleId], references: [id])
-  properties Properties[]
-  appointmentClient Appointments[] @relation("client")
-  appointmentAgent Appointments[] @relation("agent")
+model User {
+  id                Int           @id @default(autoincrement())
+  email             String        @unique
+  first_name        String
+  last_name         String?
+  password          String?
+  address           String
+  phone             String
+  roleId            Int
+  role              UserRole      @relation(fields: [roleId], references: [id])
+  properties        Property[]
+  appointmentClient Appointment[] @relation("client")
+  appointmentAgent  Appointment[] @relation("agent")
 }
 
-model UserRoles {
-  id Int @default(autoincrement()) @id
+model UserRole {
+  id          Int    @id @default(autoincrement())
   description String
-  users Users[]
+  users       User[]
 }
 
-model Properties {
-  id Int @default(autoincrement()) @id
-  agentId Int?
+model Property {
+  id                 Int              @id @default(autoincrement())
+  agentId            Int?
+  title              String
+  description        String
+  area               Int
+  floors             Int
+  price              Decimal
+  latitude           Decimal
+  longitude          Decimal
+  address            String
+  mis_number         Int
+  zipCode            Int
+  baths              Int
+  bedrooms           Int
+  propertyTypeId     Int
+  propertyCategoryId Int
+  countyId           Int
+  provinceId         Int
+  cityId             Int
+  neighbourhoodId    Int
+  createdAt          DateTime         @default(now())
+  agent              User?            @relation(fields: [agentId], references: [id])
+  type               PropertyType     @relation(fields: [propertyTypeId], references: [id])
+  county             County           @relation(fields: [countyId], references: [id])
+  province           Province         @relation(fields: [provinceId], references: [id])
+  city               City             @relation(fields: [cityId], references: [id])
+  neighbourhood      Neighbourhood    @relation(fields: [neighbourhoodId], references: [id])
+  propertyCategory   PropertyCategory @relation(fields: [propertyCategoryId], references: [id])
+  appointments       Appointment[]
+  propertyImages     PropertyImage[]
+}
+
+model PropertyType {
+  id          Int        @id @default(autoincrement())
   description String
-  area Int
-  price Decimal
-  latitude Decimal
-  longitude Decimal
-  address String
-  mis_number Int
-  zipCode Int
-  baths Int
-  bedrooms Int
-  propertyType Int
-  countyId Int
-  provinceId Int
-  cityId Int
-  neighbourhoodId Int
-  agent Users? @relation(fields: [agentId], references: [id])
-  type PropertyTypes @relation(fields: [propertyType], references: [id])
-  county Counties @relation(fields: [countyId], references: [id])
-  province Provinces @relation(fields: [provinceId], references: [id])
-  city Cities @relation(fields: [cityId], references: [id])
-  neighbourhood Neighbourhoods @relation(fields: [neighbourhoodId], references: [id])
-  appointment Appointments[]
-  propertyImages PropertyImages[]
+  property    Property[]
 }
 
-model PropertyTypes {
-  id Int @default(autoincrement()) @id
-  parentId Int?
+model PropertyCategory {
+  id          Int                @id @default(autoincrement())
+  parentId    Int?
   description String
-  parent PropertyTypes? @relation("types", fields: [parentId], references: [id])
-  property Properties[]
-  childs PropertyTypes[] @relation("types")
+  parent      PropertyCategory?  @relation("category", fields: [parentId], references: [id])
+  property    Property[]
+  childs      PropertyCategory[] @relation("category")
 }
 
-model PropertyImages {
-  id Int @default(autoincrement()) @id
+model PropertyImage {
+  id         Int      @id @default(autoincrement())
   propertyId Int
-  name String
-  url String
-  property Properties @relation(fields: [propertyId], references: [id])
+  name       String
+  url        String
+  property   Property @relation(fields: [propertyId], references: [id])
 }
 
-model Provinces {
-  id Int @default(autoincrement()) @id
-  name String
-  abbreviation String @unique
-  counties Counties[]
-  properties Properties[]
+model Province {
+  id           Int        @id @default(autoincrement())
+  name         String
+  abbreviation String     @unique
+  counties     County[]
+  properties   Property[]
 }
 
-model Counties {
-  id Int @default(autoincrement()) @id
-  name String
-  fipscode String @unique
+model County {
+  id                Int             @id @default(autoincrement())
+  name              String
+  fipscode          String          @unique
   stateAbbreviation String
-  province Provinces @relation(fields: [stateAbbreviation], references: [abbreviation])
-  cities Cities[]
-  neighbourhoods Neighbourhoods[]
-  properties Properties[]
+  province          Province        @relation(fields: [stateAbbreviation], references: [abbreviation])
+  cities            City[]
+  neighbourhoods    Neighbourhood[]
+  properties        Property[]
 }
 
-model Cities {
-  id Int @id
-  name String
-  countyFips String
+model City {
+  id                Int             @id
+  name              String
+  countyFips        String
   stateAbbreviation String
-  county Counties @relation(fields: [countyFips], references: [fipscode])
-  neighbourhood Neighbourhoods[]
-  properties Properties[]
+  county            County          @relation(fields: [countyFips], references: [fipscode])
+  neighbourhoods    Neighbourhood[]
+  properties        Property[]
 }
 
-model Neighbourhoods {
-  id Int @default(autoincrement()) @id
-  name String
-  cityId Int
-  countyFips String
+model Neighbourhood {
+  id                Int        @id @default(autoincrement())
+  name              String
+  cityId            Int
+  countyFips        String
   stateAbbreviation String
-  city Cities @relation(fields: [cityId], references: [id])
-  county Counties @relation(fields: [countyFips], references: [fipscode])
-  properties Properties[]
+  city              City       @relation(fields: [cityId], references: [id])
+  county            County     @relation(fields: [countyFips], references: [fipscode])
+  properties        Property[]
 }
 
-model Appointments {
-  id Int @default(autoincrement()) @id
-  clientId Int
-  agentId Int
+model Appointment {
+  id         Int      @id @default(autoincrement())
+  clientId   Int
+  agentId    Int
   propertyId Int
-  date DateTime
-  comment String
-  email String?
-  phone String?
-  client Users @relation("client", fields: [agentId], references: [id])
-  agent Users @relation("agent", fields: [clientId], references: [id])
-  property Properties @relation(fields: [propertyId], references: [id])
+  date       DateTime
+  comment    String
+  email      String?
+  phone      String?
+  createdAt  DateTime @default(now())
+  client     User     @relation("client", fields: [agentId], references: [id])
+  agent      User     @relation("agent", fields: [clientId], references: [id])
+  property   Property @relation(fields: [propertyId], references: [id])
 }

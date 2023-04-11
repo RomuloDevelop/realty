@@ -1,0 +1,27 @@
+@import 'react-phone-input-2/lib/style.css';
+
+.react-tel-input {
+    padding-bottom: 30px;
+    .form-control {
+        border-radius: 0;
+        height: 65px;
+        width: 100%;
+        border: 2px solid var(--border-color-9);
+    }
+    
+    .flag-dropdown {
+        height: 65px;
+        background-color: transparent !important;
+        border: none;
+        border-right: 1px solid var(--border-color-9);
+        .selected-flag {
+            background-color: transparent !important;
+        }
+    }
+    .form-control:focus ~ .flag-dropdown {
+        border-right-color: var(--ltn__secondary-color);
+    }
+    .form-control.error ~ .flag-dropdown {
+        border-right-color: var(--red);
+    }
+}

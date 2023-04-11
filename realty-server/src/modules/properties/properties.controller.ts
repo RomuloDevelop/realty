@@ -5,13 +5,15 @@ import {
   ParseFilePipeBuilder,
   Post,
   Put,
-  Req,
+  Query,
   UploadedFiles,
   UseInterceptors,
 } from '@nestjs/common';
 import { FilesInterceptor } from '@nestjs/platform-express';
-import { Properties, PropertyTypes } from '@prisma/client';
-import { Paginator } from 'types/paginator';
+import { Property, PropertyType } from '@prisma/client';
+import { Role } from 'src/common/constants';
+import { Roles } from 'src/common/decorators/roles.decorator';
+import { Paginator } from 'types';
 import { SearchProperty } from './properties.dto';
 import { PropertiesService } from './properties.service';
 
@@ -20,14 +22,15 @@ export class PropertiesController {
   constructor(private propertiesService: PropertiesService) {}
 
   @Get()
-  properties(@Req() req: Paginator) {
+  properties(@Query() req: Paginator) {
     return this.propertiesService.properties(req);
   }
 
   @Post()
+  @Roles(Role.Admin)
   @UseInterceptors(FilesInterceptor('images', 5))
   createProperty(
-    @Body() body: Properties,
+    @Body() body: Property,
     @UploadedFiles(
       new ParseFilePipeBuilder()
         .addFileTypeValidator({
@@ -56,28 +59,28 @@ export class PropertiesController {
     }));
 
     return this.propertiesService.createProperty(
-      formattedBody as Properties,
+      formattedBody as Property,
       imagesData,
     );
   }
 
   @Put()
-  updateProperty(@Body() body: Properties) {
+  updateProperty(@Body() body: Property) {
     return this.propertiesService.updateProperty(body);
   }
 
   @Get('/search')
-  searchProperty(@Req() { query }: { query: SearchProperty }) {
+  searchProperty(@Query() query: SearchProperty) {
     return this.propertiesService.searchProperties(query);
   }
 
   @Post('/types')
-  createPropertyType(@Body() body: PropertyTypes) {
+  createPropertyType(@Body() body: PropertyType) {
     return this.propertiesService.createPropertyType(body);
   }
 
   @Put('/types')
-  updatePropertyType(@Body() body: PropertyTypes) {
+  updatePropertyType(@Body() body: PropertyType) {
     return this.propertiesService.updatePropertyType(body);
   }
 }

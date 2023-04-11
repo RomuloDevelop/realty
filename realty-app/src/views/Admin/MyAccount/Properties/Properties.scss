@@ -1,0 +1,56 @@
+.table-responsive {
+    overflow-x: visible;
+
+    td .action {
+        margin: 0.5rem;
+        cursor: pointer;
+        transition: color ease-in 0.2s;
+        &:hover {
+            color: var(--ltn__secondary-color)
+        }
+    }
+}
+.MuiTablePagination-toolbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    .MuiTablePagination-selectLabel {
+        margin-bottom: 0;
+        margin-right: 0.5rem
+    }
+    .MuiTablePagination-displayedRows {
+        margin-bottom: 0;
+        margin-left: auto;
+        margin-right: 0.5rem;
+    }
+}
+
+.my-properties-img__container {
+    position: relative;
+    transition: all ease-in 0.2s;
+    color: var(--border-color-3);
+    &:hover {
+        transform: scale(1.07);
+        color: var(--ltn__secondary-color)
+    }
+    .my-properties-img__list {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        height: 1.5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #ff5a3c1f;
+    }
+
+    img {
+        aspect-ratio: 850 / 650;
+        object-fit: cover;
+    }
+
+    i {
+        margin-right: 0.5rem;
+    }
+}

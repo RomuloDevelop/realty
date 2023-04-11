@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { Properties, PropertyTypes } from '@prisma/client';
+import { Property, PropertyType } from '@prisma/client';
 import { PrismaService } from 'src/common/database/prisma.service';
-import { Paginator } from 'types/paginator';
 import { StorageService } from 'src/common/providers/storage/storage.service';
+import { Paginator } from 'types';
 import { CreateProperty, SearchProperty } from './properties.dto';
 
 @Injectable()
@@ -32,13 +32,16 @@ export class PropertiesService {
   }
 
   async properties(params: Paginator) {
-    const { skip, take, cursor, orderBy, where } = params;
-    return this.prisma.properties.findMany({
-      skip,
-      take,
-      cursor,
-      orderBy,
-      where,
+    const { page, perPage } = params;
+    const pageNum = parseInt(page);
+    const perPageNum = parseInt(perPage);
+
+    return this.prisma.property.findMany({
+      skip: pageNum * perPageNum,
+      take: perPageNum,
+      include: {
+        propertyImages: true,
+      },
     });
   }
 
@@ -49,16 +52,20 @@ export class PropertiesService {
       provinceId,
       neighbourhoodId,
       cityId,
-      propertyType,
+      propertyTypeId,
+      propertyCategoryId,
       ...data
     }: CreateProperty,
     files: { filename: string; buffer: Buffer }[],
   ) {
-    const property = await this.prisma.properties.create({
+    const property = await this.prisma.property.create({
       data: {
         ...data,
         type: {
-          connect: { id: propertyType },
+          connect: { id: propertyTypeId },
+        },
+        propertyCategory: {
+          connect: { id: propertyCategoryId },
         },
         agent: {
           connect: { id: agentId },
@@ -92,15 +99,15 @@ export class PropertiesService {
       return { url, name: image.filename, propertyId: property.id };
     });
 
-    const propertyImages = await this.prisma.propertyImages.createMany({
+    const propertyImages = await this.prisma.propertyImage.createMany({
       data: images,
     });
 
     return { ...property, propertyImages };
   }
 
-  async updateProperty(data: Properties) {
-    return this.prisma.properties.update({
+  async updateProperty(data: Property) {
+    return this.prisma.property.update({
       data,
       where: {
         id: data.id,
@@ -108,16 +115,16 @@ export class PropertiesService {
     });
   }
 
-  async createProperties(data: Properties[]) {
-    return this.prisma.properties.createMany({ data });
+  async createProperties(data: Property[]) {
+    return this.prisma.property.createMany({ data });
   }
 
-  async createPropertyType(data: PropertyTypes) {
-    return this.prisma.propertyTypes.create({ data });
+  async createPropertyType(data: PropertyType) {
+    return this.prisma.propertyType.create({ data });
   }
 
-  async updatePropertyType(data: PropertyTypes) {
-    return this.prisma.propertyTypes.update({
+  async updatePropertyType(data: PropertyType) {
+    return this.prisma.propertyType.update({
       data,
       where: {
         id: data.id,
