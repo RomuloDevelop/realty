@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import PhoneInput from '../../components/PhoneInput'
-import DefaultLayout from '../../layouts/DefaultLayout'
+import ScreenLayout from '../../layouts/ScreenLayout'
 import useRegister from './useRegister'
 
 const Register = () => {
   const { isLoading, control, register, errors, handleSubmit } = useRegister()
   return (
-    <DefaultLayout>
+    <ScreenLayout title="Sesión" subheader="Registro">
       <div className="ltn__login-area pb-110">
         <div className="container">
           <div className="row">
@@ -111,7 +111,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </DefaultLayout>
+    </ScreenLayout>
   )
 }
 

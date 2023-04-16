@@ -8,8 +8,14 @@ const useProperties = () => {
   const [perPage, setRowsPerPage] = useState<number>(10)
   const isFirstRender = useFirstRender()
 
-  const { data, refetch, isLoading } = useQuery(['properties'], () =>
-    getProperties({ page, perPage })
+  const { data, refetch, isLoading } = useQuery(
+    ['properties'],
+    () => getProperties({ page, perPage }),
+    {
+      onError: (error) => {
+        console.log(error)
+      },
+    }
   )
 
   const handleChangePage = useCallback(

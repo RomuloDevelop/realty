@@ -63,7 +63,9 @@ class Navbar extends Component {
 					<div className="col">
 					<div className="site-logo-wrap">
 						<div className="site-logo go-top">
-						<Link to="/"><img src={publicUrl+"assets/img/logo.png"} alt="Logo" /></Link>
+						<Link to="/">
+							<img height={80} src={publicUrl+"assets/img/MILLENIAN-LOGO-06.png"} alt="Logo" />
+						</Link>
 						</div>
 						<div className="get-support clearfix d-none">
 						<div className="get-support-icon">

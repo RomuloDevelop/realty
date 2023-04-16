@@ -1,5 +1,4 @@
-import { Body, Controller, Get } from '@nestjs/common';
-import { Prisma } from '@prisma/client';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ProvincesService } from './provinces.service';
 
 @Controller('provinces')
@@ -7,24 +6,22 @@ export class CountryController {
   constructor(private provincesService: ProvincesService) {}
 
   @Get()
-  async provinces(@Body() body: { data: Prisma.ProvincesCreateManyInput[] }) {
-    this.provincesService.createProvinces(body.data);
+  async provinces() {
+    return this.provincesService.provinces();
   }
 
   @Get('/counties')
-  async counties(@Body() body: { data: Prisma.CountiesCreateManyInput[] }) {
-    this.provincesService.createCounties(body.data);
+  async counties(@Query() query: { name: string; abbreviation: string }) {
+    return this.provincesService.counties(query);
   }
 
   @Get('/cities')
-  async cities(@Body() body: { data: Prisma.CitiesCreateManyInput[] }) {
-    this.provincesService.createCities(body.data);
+  async cities(@Query() query: { name: string; countyFips: string }) {
+    return this.provincesService.cities(query);
   }
 
   @Get('/neighbourhoods')
-  async neighbourhoods(
-    @Body() body: { data: Prisma.NeighbourhoodsCreateManyInput[] },
-  ) {
-    this.provincesService.createNeighbourhoods(body.data);
+  async neighbourhoods(@Query() query: { name: string; cityId: string }) {
+    return this.provincesService.neighbourhoods(query);
   }
 }

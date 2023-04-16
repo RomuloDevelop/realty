@@ -32,36 +32,36 @@ model UserRole {
 }
 
 model Property {
-  id                 Int              @id @default(autoincrement())
-  agentId            Int?
-  title              String
-  description        String
-  area               Int
-  floors             Int
-  price              Decimal
-  latitude           Decimal
-  longitude          Decimal
-  address            String
-  mis_number         Int
-  zipCode            Int
-  baths              Int
-  bedrooms           Int
-  propertyTypeId     Int
-  propertyCategoryId Int
-  countyId           Int
-  provinceId         Int
-  cityId             Int
-  neighbourhoodId    Int
-  createdAt          DateTime         @default(now())
-  agent              User?            @relation(fields: [agentId], references: [id])
-  type               PropertyType     @relation(fields: [propertyTypeId], references: [id])
-  county             County           @relation(fields: [countyId], references: [id])
-  province           Province         @relation(fields: [provinceId], references: [id])
-  city               City             @relation(fields: [cityId], references: [id])
-  neighbourhood      Neighbourhood    @relation(fields: [neighbourhoodId], references: [id])
-  propertyCategory   PropertyCategory @relation(fields: [propertyCategoryId], references: [id])
-  appointments       Appointment[]
-  propertyImages     PropertyImage[]
+  id                   Int              @id @default(autoincrement())
+  agentId              Int?
+  title                String
+  description          String
+  area                 Int
+  floors               Int
+  price                Decimal
+  latitude             Decimal
+  longitude            Decimal
+  address              String
+  mis_number           Int
+  zipCode              Int
+  baths                Int
+  bedrooms             Int
+  propertyTypeId       Int
+  propertyCategoryId   Int
+  countyFipscode       String
+  provinceAbbreviation String
+  cityId               Int
+  neighbourhoodId      Int?
+  createdAt            DateTime         @default(now())
+  agent                User?            @relation(fields: [agentId], references: [id])
+  type                 PropertyType     @relation(fields: [propertyTypeId], references: [id])
+  county               County           @relation(fields: [countyFipscode], references: [fipscode])
+  province             Province         @relation(fields: [provinceAbbreviation], references: [abbreviation])
+  city                 City             @relation(fields: [cityId], references: [id])
+  neighbourhood        Neighbourhood?   @relation(fields: [neighbourhoodId], references: [id])
+  propertyCategory     PropertyCategory @relation(fields: [propertyCategoryId], references: [id])
+  appointments         Appointment[]
+  propertyImages       PropertyImage[]
 }
 
 model PropertyType {

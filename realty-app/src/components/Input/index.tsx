@@ -7,6 +7,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> &
     containerClass?: string
     inputClass?: string
     register?: UseFormRegisterReturn | {}
+    options?: { name: string; id: number }[]
   }
 
 const Input = ({
@@ -21,7 +22,7 @@ const Input = ({
       <input
         {...register}
         {...rest}
-        className={`${inputClass} ${error && 'error'}`}
+        className={`${inputClass} ${error ? 'error' : ''}`}
       />
       <InputError error={error} />
     </div>

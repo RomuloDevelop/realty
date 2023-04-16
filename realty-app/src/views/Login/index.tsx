@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import DefaultLayout from '../../layouts/DefaultLayout'
+import ScreenLayout from '../../layouts/ScreenLayout'
 import useLogin from './useLogin'
 
 const publicUrl = process.env.PUBLIC_URL + '/'
@@ -11,7 +12,7 @@ const Login = () => {
   const { handleSubmit, isLoading, register, errors } = useLogin()
 
   return (
-    <DefaultLayout>
+    <ScreenLayout title="Sesión" subheader="Iniciar">
       <div className="ltn__login-area pb-65">
         <div className="container">
           <div className="row">
@@ -152,7 +153,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-    </DefaultLayout>
+    </ScreenLayout>
   )
 }
 

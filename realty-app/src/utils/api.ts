@@ -2,6 +2,7 @@ import axios from 'axios'
 import { TokenUtils } from './tokenUtils'
 
 interface Params {
+  customApi?: boolean
   url: string
   method?: 'get' | 'post' | 'put' | 'delete'
   body?: any
@@ -20,7 +21,14 @@ axios.interceptors.response.use(
   }
 )
 
-const api = async ({ url, headers, method, body, params }: Params) => {
+const api = async ({
+  url,
+  headers,
+  method,
+  body,
+  params,
+  customApi,
+}: Params) => {
   if (url[0] === '/') {
     url = url.slice(1)
   }
@@ -39,7 +47,7 @@ const api = async ({ url, headers, method, body, params }: Params) => {
   const controller = new AbortController()
 
   const axiosParameters = {
-    url: `${API_URL}/${url}`,
+    url: `${customApi ? '' : API_URL + '/'}${url}`,
     method,
     headers: {
       ...defaultHeaders,
@@ -62,19 +70,37 @@ const api = async ({ url, headers, method, body, params }: Params) => {
   })
 }
 
-const get = ({ url, headers, params }: Params): Promise<any> => {
-  return api({ url, headers, method: 'get', params })
+const get = ({ url, headers, params, customApi }: Params): Promise<any> => {
+  return api({ url, headers, method: 'get', params, customApi })
 }
 
-const post = ({ url, headers, body, params }: Params): Promise<any> => {
-  return api({ url, headers, method: 'post', body, params })
+const post = ({
+  url,
+  headers,
+  body,
+  params,
+  customApi,
+}: Params): Promise<any> => {
+  return api({ url, headers, method: 'post', body, params, customApi })
 }
 
-const put = ({ url, headers, body, params }: Params): Promise<any> => {
-  return api({ url, headers, method: 'put', body, params })
+const put = ({
+  url,
+  headers,
+  body,
+  params,
+  customApi,
+}: Params): Promise<any> => {
+  return api({ url, headers, method: 'put', body, params, customApi })
 }
-const remove = ({ url, headers, body, params }: Params): Promise<any> => {
-  return api({ url, headers, method: 'delete', body, params })
+const remove = ({
+  url,
+  headers,
+  body,
+  params,
+  customApi,
+}: Params): Promise<any> => {
+  return api({ url, headers, method: 'delete', body, params, customApi })
 }
 
 const formData = ({

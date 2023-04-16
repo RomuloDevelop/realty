@@ -46,7 +46,13 @@ export class PropertiesController {
     const formattedBody = {};
 
     Object.keys(body).forEach((item) => {
-      if (item !== 'address' && item !== 'description') {
+      if (
+        item !== 'title' &&
+        item !== 'provinceAbbreviation' &&
+        item !== 'countyFipscode' &&
+        item !== 'address' &&
+        item !== 'description'
+      ) {
         formattedBody[item] = parseFloat(body[item]);
         return;
       }
@@ -74,13 +80,13 @@ export class PropertiesController {
     return this.propertiesService.searchProperties(query);
   }
 
-  @Post('/types')
-  createPropertyType(@Body() body: PropertyType) {
-    return this.propertiesService.createPropertyType(body);
+  @Get('/types')
+  propertyTypes() {
+    return this.propertiesService.types();
   }
 
-  @Put('/types')
-  updatePropertyType(@Body() body: PropertyType) {
-    return this.propertiesService.updatePropertyType(body);
+  @Get('/categories')
+  propertyCategories() {
+    return this.propertiesService.categories();
   }
 }

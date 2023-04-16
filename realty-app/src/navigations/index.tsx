@@ -48,13 +48,13 @@ import AddListing from '../components/add-listing'
 import Wishlist from '../components/wishlist'
 import OrderTracking from '../components/order-tracking'
 import History from '../components/history'
-import { Login, Register, MyAccount } from '../views'
+import { Login, Register, MyAccount, Home } from '../views'
 
 const Navigations = () => (
   <HashRouter basename="/">
     <div>
       <Switch>
-        <Route exact path="/" component={HomeV1} />
+        {/* <Route exact path="/" component={HomeV1} /> */}
         <Route path="/home-v2" component={HomeV2} />
         <Route path="/home-v3" component={HomeV3} />
         <Route path="/home-v4" component={HomeV4} />
@@ -63,7 +63,6 @@ const Navigations = () => (
         <Route path="/home-v7" component={HomeV7} />
         <Route path="/home-v8" component={HomeV8} />
         <Route path="/home-v9" component={HomeV9} />
-        <Route path="/home-v10" component={HomeV10} />
         <Route path="/about" component={About} />
         <Route path="/service" component={Service} />
         <Route path="/service-details" component={ServiceDetails} />
@@ -97,6 +96,7 @@ const Navigations = () => (
         <Route path="/wishlist" component={Wishlist} />
         <Route path="/order-tracking" component={OrderTracking} />
         <Route path="/history" component={History} />
+        <Route path="/" component={Home} />
       </Switch>
     </div>
   </HashRouter>

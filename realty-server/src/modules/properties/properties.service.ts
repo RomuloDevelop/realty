@@ -46,44 +46,12 @@ export class PropertiesService {
   }
 
   async createProperty(
-    {
-      agentId,
-      countyId,
-      provinceId,
-      neighbourhoodId,
-      cityId,
-      propertyTypeId,
-      propertyCategoryId,
-      ...data
-    }: CreateProperty,
+    data: CreateProperty,
     files: { filename: string; buffer: Buffer }[],
   ) {
-    const property = await this.prisma.property.create({
-      data: {
-        ...data,
-        type: {
-          connect: { id: propertyTypeId },
-        },
-        propertyCategory: {
-          connect: { id: propertyCategoryId },
-        },
-        agent: {
-          connect: { id: agentId },
-        },
-        county: {
-          connect: { id: countyId },
-        },
-        province: {
-          connect: { id: provinceId },
-        },
-        city: {
-          connect: { id: cityId },
-        },
-        neighbourhood: {
-          connect: { id: neighbourhoodId },
-        },
-      },
-    });
+    if (!data.neighbourhoodId) delete data.neighbourhoodId;
+
+    const property = await this.prisma.property.create({ data });
 
     const images = files.map((image) => {
       const url = this.storage.save(
@@ -104,6 +72,14 @@ export class PropertiesService {
     });
 
     return { ...property, propertyImages };
+  }
+
+  async types() {
+    return this.prisma.propertyType.findMany();
+  }
+
+  async categories() {
+    return this.prisma.propertyCategory.findMany();
   }
 
   async updateProperty(data: Property) {
