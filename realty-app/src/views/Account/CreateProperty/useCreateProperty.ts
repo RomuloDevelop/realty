@@ -1,8 +1,9 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { City, County, Neighbourhood, Property } from '@prisma/client'
+import { City, County, Neighbourhood } from '@prisma/client'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useParams } from 'react-router-dom'
 import { InferType } from 'yup'
 import {
   createProperty,
@@ -12,11 +13,13 @@ import {
   getPropertyCategories,
   getPropertyTypes,
   getProvinces,
-} from '../../../../services'
-import getLatLngFromCoords from '../../../../utils/helpers/getLatLngFromCoords'
+  updateProperty,
+} from '../../../services'
+import getLatLngFromCoords from '../../../utils/helpers/getLatLngFromCoords'
 import Schema from './schema'
 
 const useCreateProperty = () => {
+  const { id } = useParams<{ id: string }>()
   const [counties, setCounties] = useState<County[]>([])
   const [cities, setCities] = useState<City[] | null>(null)
   const [neighborhoods, setNeighborhoods] = useState<Neighbourhood[] | null>(
@@ -44,8 +47,6 @@ const useCreateProperty = () => {
   const city = watch('city')
   const coordinates = watch('coordinates')
 
-  console.log(errors)
-
   const { data = [], isLoading: isLoadingData } = useQuery(
     ['select-data'],
     () =>
@@ -53,7 +54,7 @@ const useCreateProperty = () => {
   )
 
   const { mutate: sendForm, isLoading: isLoadingCreate } = useMutation(
-    createProperty,
+    (body: FormData) => (id ? updateProperty(id, body) : createProperty(body)),
     {
       onError: (error) => {
         console.error(error)

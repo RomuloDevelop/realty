@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
+import Hashing from 'src/common/utils/hashing';
 import { Paginator } from 'types';
 import { PrismaService } from '../../common/database/prisma.service';
 
@@ -36,14 +37,14 @@ export class UsersService {
     return this.prisma.user.create({ data });
   }
 
-  async updateUser(params: {
-    where: Prisma.UserWhereUniqueInput;
-    data: Prisma.UserUpdateInput;
-  }): Promise<User> {
-    const { where, data } = params;
+  async updateUser(user: User): Promise<User> {
+    const { id, ...data } = user;
+
     return this.prisma.user.update({
       data,
-      where,
+      where: {
+        id,
+      },
     });
   }
 

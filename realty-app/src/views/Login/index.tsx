@@ -2,13 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-import DefaultLayout from '../../layouts/DefaultLayout'
+import useScrollToTopOnMount from '../../hooks/useSrollToTopOnMount'
 import ScreenLayout from '../../layouts/ScreenLayout'
 import useLogin from './useLogin'
 
 const publicUrl = process.env.PUBLIC_URL + '/'
 
 const Login = () => {
+  useScrollToTopOnMount()
   const { handleSubmit, isLoading, register, errors } = useLogin()
 
   return (

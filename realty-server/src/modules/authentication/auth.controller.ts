@@ -1,4 +1,11 @@
-import { Body, Controller, Post, Request, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Post,
+  Put,
+  Request,
+  UseGuards,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { User } from '@prisma/client';
 import { Public } from 'src/common/decorators/public.decorator';
@@ -19,5 +26,11 @@ export class AuthController {
   @Post('register')
   async register(@Body() user: User) {
     return this.authService.register(user);
+  }
+
+  @Public()
+  @Put('updateAccount')
+  async updateAccount(@Body() user: User & { actualPassword: string }) {
+    return this.authService.updateAccount(user);
   }
 }

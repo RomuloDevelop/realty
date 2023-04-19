@@ -21,7 +21,7 @@ axios.interceptors.response.use(
   }
 )
 
-const api = async ({
+const api = async <R>({
   url,
   headers,
   method,
@@ -59,8 +59,8 @@ const api = async ({
     params,
   }
 
-  return new Promise((resolve, reject) => {
-    axios(axiosParameters)
+  return new Promise<{ data: R }>((resolve, reject) => {
+    axios<any, { data: R }>(axiosParameters)
       .then((response) => {
         resolve(response)
       })
@@ -70,37 +70,25 @@ const api = async ({
   })
 }
 
-const get = ({ url, headers, params, customApi }: Params): Promise<any> => {
-  return api({ url, headers, method: 'get', params, customApi })
+const get = <R>({ url, headers, params, customApi }: Params) => {
+  return api<R>({ url, headers, method: 'get', params, customApi })
 }
 
-const post = ({
-  url,
-  headers,
-  body,
-  params,
-  customApi,
-}: Params): Promise<any> => {
-  return api({ url, headers, method: 'post', body, params, customApi })
+const post = <R = any>({ url, headers, body, params, customApi }: Params) => {
+  return api<R>({ url, headers, method: 'post', body, params, customApi })
 }
 
-const put = ({
-  url,
-  headers,
-  body,
-  params,
-  customApi,
-}: Params): Promise<any> => {
-  return api({ url, headers, method: 'put', body, params, customApi })
+const put = <R = any>({ url, headers, body, params, customApi }: Params) => {
+  return api<R>({ url, headers, method: 'put', body, params, customApi })
 }
-const remove = ({
+const remove = <R = any>({
   url,
   headers,
   body,
   params,
   customApi,
 }: Params): Promise<any> => {
-  return api({ url, headers, method: 'delete', body, params, customApi })
+  return api<R>({ url, headers, method: 'delete', body, params, customApi })
 }
 
 const formData = ({

@@ -71,8 +71,47 @@ export class PropertiesController {
   }
 
   @Put()
-  updateProperty(@Body() body: Property) {
-    return this.propertiesService.updateProperty(body);
+  @Roles(Role.Admin)
+  @UseInterceptors(FilesInterceptor('images', 5))
+  updateProperty(
+    @Body() body: Property,
+    @UploadedFiles(
+      new ParseFilePipeBuilder()
+        .addFileTypeValidator({
+          fileType: /jpeg|png|jpg|webp|svg/,
+        })
+        .addMaxSizeValidator({
+          maxSize: 1024 * 1024 * 3,
+        })
+        .build(),
+    )
+    images: Express.Multer.File[],
+  ) {
+    const formattedBody = {};
+
+    Object.keys(body).forEach((item) => {
+      if (
+        item !== 'title' &&
+        item !== 'provinceAbbreviation' &&
+        item !== 'countyFipscode' &&
+        item !== 'address' &&
+        item !== 'description'
+      ) {
+        formattedBody[item] = parseFloat(body[item]);
+        return;
+      }
+      formattedBody[item] = body[item];
+    });
+
+    const imagesData = images.map((item) => ({
+      filename: item.originalname,
+      buffer: item.buffer,
+    }));
+
+    return this.propertiesService.updateProperty(
+      formattedBody as Property,
+      imagesData,
+    );
   }
 
   @Get('/search')

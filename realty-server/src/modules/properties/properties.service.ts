@@ -82,13 +82,44 @@ export class PropertiesService {
     return this.prisma.propertyCategory.findMany();
   }
 
-  async updateProperty(data: Property) {
-    return this.prisma.property.update({
+  async updateProperty(
+    data: Property,
+    files: { filename: string; buffer: Buffer }[],
+  ) {
+    if (!data.neighbourhoodId) delete data.neighbourhoodId;
+
+    const property = await this.prisma.property.update({
       data,
       where: {
         id: data.id,
       },
     });
+
+    const images = files.map((image) => {
+      const url = this.storage.save(
+        `properties/${data.id}/${image.filename}`,
+        image.buffer,
+        [
+          {
+            meta: 'meta',
+          },
+        ],
+      );
+
+      return { url, name: image.filename, propertyId: data.id };
+    });
+
+    await this.prisma.propertyImage.deleteMany({
+      where: {
+        propertyId: data.id,
+      },
+    });
+
+    const propertyImages = await this.prisma.propertyImage.createMany({
+      data: images,
+    });
+
+    return { ...property, propertyImages };
   }
 
   async createProperties(data: Property[]) {

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import React, { useCallback, useEffect, useState } from 'react'
-import useFirstRender from '../../../../hooks/useFirstRender'
-import { getProperties } from '../../../../services'
+import useFirstRender from '../../../hooks/useFirstRender'
+import { getProperties } from '../../../services'
 
 const useProperties = () => {
   const [page, setPage] = useState<number>(0)

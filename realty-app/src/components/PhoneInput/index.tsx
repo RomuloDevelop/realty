@@ -6,9 +6,10 @@ import './PhoneInput.scss'
 
 type Props = PhoneInputProps & {
   control: any
+  inputClass?: string
 }
 
-const PhoneInput = ({ control, ...rest }: Props) => {
+const PhoneInput = ({ control, inputClass = '', ...rest }: Props) => {
   return (
     <Controller
       name="phone"
@@ -19,7 +20,7 @@ const PhoneInput = ({ control, ...rest }: Props) => {
           <PhoneInputCore
             {...field}
             {...rest}
-            inputClass={fieldState.error ? 'error' : ''}
+            inputClass={`${inputClass} ${fieldState.error ? 'error' : ''}`}
           />
           <InputError error={fieldState.error?.message} />
         </div>

@@ -13,8 +13,10 @@ import Testimonial from '../components/section-components/testimonial-v2'
 import BlogSlider from '../components/blog-components/blog-slider-v1'
 import CallToActionV1 from '../components/section-components/call-to-action-v1'
 import DefaultLayout from '../layouts/DefaultLayout'
+import useScrollToTopOnMount from '../hooks/useSrollToTopOnMount'
 
 const Home = () => {
+  useScrollToTopOnMount()
   return (
     <DefaultLayout>
       <Banner />

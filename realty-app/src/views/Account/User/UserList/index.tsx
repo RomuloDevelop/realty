@@ -1,20 +1,20 @@
+import { TablePaginationUnstyled } from '@mui/base'
 import React from 'react'
-import TablePaginationUnstyled from '@mui/base/TablePaginationUnstyled'
-import useProperties from './useProperties'
+import { Link, useRouteMatch } from 'react-router-dom'
 import Spinner from '../../../../components/Spinner'
-import { Link } from 'react-router-dom'
-import './Properties.scss'
-import { NumericFormat } from 'react-number-format'
+import useUsers from './useUserList'
 
-const Properties = () => {
+const UserList = () => {
+  const { url } = useRouteMatch()
+
   const {
+    isLoading,
     data,
-    perPage,
     page,
+    perPage,
     handleChangePage,
     handleChangeRowsPerPage,
-    isLoading,
-  } = useProperties()
+  } = useUsers()
 
   return (
     <div id="ltn_tab_1_1">
@@ -27,9 +27,10 @@ const Properties = () => {
             <thead>
               <tr>
                 <th scope="col"></th>
-                <th scope="col">Mis Propiedades</th>
-                <th scope="col" />
-                <th scope="col">Fecha de creación</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Role</th>
                 <th scope="col">Acciones</th>
               </tr>
             </thead>
@@ -44,54 +45,38 @@ const Properties = () => {
               {!!data?.length &&
                 !isLoading &&
                 data.map((row) => (
-                  <tr>
+                  <tr key={row.id}>
                     <td>{row.id}</td>
-                    <td className="ltn__my-properties-img go-top">
-                      <Link to="/product-details">
-                        <div className="my-properties-img__container">
-                          <img src={row.propertyImages[0].url} alt="#" />
-                          <div className="my-properties-img__list">
-                            <i className="fas fa-camera"></i>
-                            {row.propertyImages.length}
-                          </div>
-                        </div>
-                      </Link>
-                    </td>
                     <td>
                       <div className="ltn__my-properties-info">
-                        <h6 className="mb-10 go-top">
-                          <Link to="/product-details">
-                            <NumericFormat
-                              displayType="text"
-                              prefix="$"
-                              value={row.price as any as string}
-                              thousandSeparator={','}
-                              decimalSeparator={'.'}
-                              decimalScale={2}
-                            />
-                          </Link>
-                        </h6>
-                        <small>
-                          <i className="icon-placeholder" /> {row.address}
-                        </small>
-                        <p>{row.description}</p>
+                        <span className="mb-10 go-top">{row.first_name}</span>
                       </div>
                     </td>
-                    <td>{row.createdAt as any as string}</td>
                     <td>
-                      <span className="action">
-                        <i className="fa-regular fa-pen-to-square" />
-                      </span>
+                      <span className="go-top">{row.email}</span>
+                    </td>
+                    <td>
+                      <span className="mb-10 go-top">{row.phone}</span>
+                    </td>
+                    <td className="ltn__my-properties-img go-top">
+                      <span>{row.role}</span>
+                    </td>
+                    <td>
+                      <Link to={`${url}/${row.id}`}>
+                        <span className="action">
+                          <i className="fa-regular fa-pen-to-square" />
+                        </span>
+                      </Link>
                       <span className="action">
                         <i className="fa-solid fa-trash-can" />
                       </span>
                     </td>
                   </tr>
                 ))}
-              {!data.length && !isLoading && (
+              {!data?.length && !isLoading && (
                 <tr>
                   <td colSpan={6}>
-                    <strong>Sin propiedades para mostrar</strong>
+                    <strong>Sin usuarios para mostrar</strong>
                   </td>
                 </tr>
               )}
@@ -101,7 +86,7 @@ const Properties = () => {
                 <TablePaginationUnstyled
                   rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                   colSpan={6}
-                  count={data.length}
+                  count={data?.length || 0}
                   rowsPerPage={perPage}
                   page={page}
                   slotProps={{
@@ -126,4 +111,4 @@ const Properties = () => {
   )
 }
 
-export default Properties
+export default UserList

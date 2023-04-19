@@ -1,8 +1,8 @@
 import { City, County, Neighbourhood, Province } from '@prisma/client'
 import { get } from '../utils/api'
 
-export const getProvinces = async (): Promise<Province[]> => {
-  const { data } = await get({
+export const getProvinces = async () => {
+  const { data } = await get<Province[]>({
     url: '/provinces',
   })
 
@@ -12,8 +12,8 @@ export const getProvinces = async (): Promise<Province[]> => {
 export const getCounties = async (params: {
   name: string
   abbreviation: string
-}): Promise<County[]> => {
-  const { data } = await get({
+}) => {
+  const { data } = await get<County[]>({
     url: 'provinces/counties',
     params,
   })
@@ -24,8 +24,8 @@ export const getCounties = async (params: {
 export const getCities = async (params: {
   name: string
   countyFips: string
-}): Promise<City[]> => {
-  const { data } = await get({
+}) => {
+  const { data } = await get<City[]>({
     url: 'provinces/cities',
     params,
   })
@@ -36,8 +36,8 @@ export const getCities = async (params: {
 export const getNeighborhoods = async (params: {
   name: string
   cityId: number
-}): Promise<Neighbourhood[]> => {
-  const { data } = await get({
+}) => {
+  const { data } = await get<Neighbourhood[]>({
     url: 'provinces/neighbourhoods',
     params,
   })

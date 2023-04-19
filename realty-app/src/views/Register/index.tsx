@@ -7,7 +7,8 @@ import ScreenLayout from '../../layouts/ScreenLayout'
 import useRegister from './useRegister'
 
 const Register = () => {
-  const { isLoading, control, register, errors, handleSubmit } = useRegister()
+  const { isLoading, control, register, errors, handleSubmit, send } =
+    useRegister()
   return (
     <ScreenLayout title="Sesión" subheader="Registro">
       <div className="ltn__login-area pb-110">
@@ -15,14 +16,10 @@ const Register = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title-area text-center">
-                <h1 className="section-title">
-                  Register <br />
-                  Your Account
-                </h1>
+                <h1 className="section-title">Registra tu Cuenta</h1>
                 <p>
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit.{' '}
-                  <br />
-                  Sit aliquid, Non distinctio vel iste.
+                  Registra tus datos para poder generar citas <br />
+                  con nuestros agentes.
                 </p>
               </div>
             </div>
@@ -31,7 +28,7 @@ const Register = () => {
             <div className="col-lg-6 offset-lg-3">
               <div className="account-login-inner">
                 <form
-                  onSubmit={handleSubmit}
+                  onSubmit={handleSubmit(send)}
                   className="ltn__form-box contact-form-box"
                 >
                   <Input
@@ -74,7 +71,7 @@ const Register = () => {
                     type="text"
                     placeholder="Dirección"
                   />
-                  <label className="checkbox-inline">
+                  {/* <label className="checkbox-inline">
                     <input type="checkbox" defaultValue="" />
                     &nbsp; I consent to Herboil processing my personal data in
                     order to send personalized marketing material in accordance
@@ -83,27 +80,27 @@ const Register = () => {
                   <label className="checkbox-inline">
                     <input type="checkbox" defaultValue="" /> &nbsp; By clicking
                     "create account", I consent to the privacy policy.
-                  </label>
+                  </label> */}
                   <div className="btn-wrapper">
                     <Button
                       className="reverse-color"
                       type="submit"
                       loading={isLoading}
                     >
-                      CREATE ACCOUNT
+                      CREAR CUENTA
                     </Button>
                   </div>
                 </form>
                 <div className="by-agree text-center">
-                  <p>By creating an account, you agree to our:</p>
+                  {/* <p>By creating an account, you agree to our:</p>
                   <p>
                     <a href="#">
                       TERMS OF CONDITIONS &nbsp; &nbsp; | &nbsp; &nbsp; PRIVACY
                       POLICY
                     </a>
-                  </p>
+                  </p> */}
                   <div className="go-to-btn mt-50 go-top">
-                    <Link to="/login">ALREADY HAVE AN ACCOUNT ?</Link>
+                    <Link to="/login">YA TIENES UNA CUENTA ?</Link>
                   </div>
                 </div>
               </div>

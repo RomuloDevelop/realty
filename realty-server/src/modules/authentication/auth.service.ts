@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from 'src/modules/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '@prisma/client';
@@ -45,6 +45,22 @@ export class AuthService {
     data.roleId = Role.Client;
     data.password = await Hashing.hashKey(data.password);
     const { password, ...result } = await this.usersService.createUser(data);
+    return result;
+  }
+
+  async updateAccount(data: User & { actualPassword: string }) {
+    const { password: passwordFromDb } = await this.usersService.user({
+      email: data.email,
+    });
+    const passwordValid = await Hashing.compareKeyWithHash(
+      passwordFromDb,
+      data.actualPassword,
+    );
+
+    if (passwordValid) data.password = await Hashing.hashKey(data.password);
+    else throw new UnauthorizedException();
+
+    const { password, ...result } = await this.usersService.updateUser(data);
     return result;
   }
 }
