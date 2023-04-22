@@ -4,15 +4,14 @@
   "description": "Realty monorepo",
   "main": "index.js",
   "workspaces": [
-    "realty-app",
-    "realty-server"
+    "packages/*"
   ],
   "scripts": {
     "commit": "cz",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "back:dev": "cd realty-server && npm run start:dev",
-    "front:dev": "cd realty-app && npm start",
+    "back:dev": "cd packages/backend && npm run start:dev",
+    "front:dev": "cd packages/frontend && npm start",
     "start": "npm-run-all --parallel back:dev front:dev"
   },
   "keywords": [
@@ -27,63 +26,14 @@
   "devDependencies": {
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
-    "@s-ui/mono": "^2.34.0",
-    "@types/bcrypt": "^5.0.0",
-    "@types/lodash": "^4.14.191",
-    "@types/multer": "^1.4.7",
-    "@types/passport-local": "^1.0.35",
-    "@types/react-transition-group": "^4.4.5",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "npm-run-all": "^4.1.5",
-    "prisma": "^4.11.0",
-    "sass": "^1.60.0",
     "ts-node": "^10.9.1"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "@google-cloud/storage": "^6.9.5",
-    "@hookform/resolvers": "^3.0.1",
-    "@mui/base": "^5.0.0-alpha.124",
-    "@nestjs/config": "^2.3.1",
-    "@nestjs/passport": "^9.0.3",
-    "@prisma/client": "^4.11.0",
-    "@react-google-maps/api": "^2.18.1",
-    "@tanstack/react-query": "^4.28.0",
-    "@tanstack/react-query-devtools": "^4.29.0",
-    "@types/axios": "^0.14.0",
-    "@types/jest": "^29.5.0",
-    "@types/node": "^18.15.11",
-    "@types/react": "^18.0.33",
-    "@types/react-dom": "^18.0.11",
-    "@types/react-router-dom": "^5.3.3",
-    "@types/yup": "^0.32.0",
-    "axios": "^1.3.4",
-    "bcrypt": "^5.1.0",
-    "dayjs": "^1.11.7",
-    "google-map-react": "^2.2.0",
-    "google-maps-react-18-support": "^2.1.0",
-    "install": "^0.13.0",
-    "lodash": "^4.17.21",
-    "npm": "^9.6.4",
-    "passport": "^0.6.0",
-    "passport-local": "^1.0.0",
-    "prettier": "^2.8.7",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-hook-form": "^7.43.9",
-    "react-number-format": "^5.1.4",
-    "react-phone-input-2": "^2.15.1",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "^5.0.1",
-    "react-transition-group": "^4.4.5",
-    "save-dev": "^0.0.1-security",
-    "typescript": "^4.9.5",
-    "uuid": "^9.0.0",
-    "yup": "^1.0.2"
   }
 }
