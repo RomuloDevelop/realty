@@ -9,7 +9,7 @@
   "scripts": {
     "commit": "cz",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "[ \"$NODE_ENV\" = production ] && exit 0; husky install",
+    "prepare": "if [ -z \"$npm_config_production\" ]; then husky install",
     "back:dev": "cd packages/backend && npm run start:dev",
     "front:dev": "cd packages/frontend && npm start",
     "start": "npm-run-all --parallel back:dev front:dev"
