@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Realty monorepo",
   "main": "index.js",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "commit": "cz",
     "test": "echo \"Error: no test specified\" && exit 1",
