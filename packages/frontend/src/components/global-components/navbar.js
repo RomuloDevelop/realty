@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Social from '../section-components/social';
+import { useAuth } from '../../providers/AuthContext';
 
-class Navbar extends Component {
-	
-    render() {
-        let publicUrl = process.env.PUBLIC_URL+'/'
+let publicUrl = process.env.PUBLIC_URL+'/'
+const Navbar = () => {
+		const {user, logout} = useAuth()
+
+
         return (
 		<div>
            <header className="ltn__header-area ltn__header-5 ltn__header-transparent--- gradient-color-4---">
@@ -46,9 +48,9 @@ class Navbar extends Component {
 							</li>
 							<li>
 							{/* header-top-btn */}
-							<div className="header-top-btn">
+							{/* <div className="header-top-btn">
 								<Link to="/add-listing">Add Listing</Link>
-							</div>
+							</div> */}
 							</li>
 						</ul>
 						</div>
@@ -129,7 +131,7 @@ class Navbar extends Component {
 							</li>
 							<li className="menu-icon"><Link to="/about">About</Link>
 								<ul>
-								<li><Link to="/about">About</Link></li>
+								<li><Link to="/about">Sobre nosotros</Link></li>
 								<li><Link to="/service">Services</Link></li>
 								<li><Link to="/service-details">Service Details</Link></li>
 								<li><Link to="/portfolio">Portfolio</Link></li>
@@ -141,7 +143,7 @@ class Navbar extends Component {
 								<li><Link to="/location">Google Map Locations</Link></li>
 								</ul>
 							</li>
-							<li className="menu-icon"><Link to="/shop">Shop</Link>
+							{/* <li className="menu-icon"><Link to="/shop">Shop</Link>
 								<ul>
 									<li><Link to="/shop">Shop</Link></li>
 									<li><Link to="/shop-grid">Shop Grid</Link></li>
@@ -154,8 +156,8 @@ class Navbar extends Component {
 									<li><Link to="/login">Sign in</Link></li>
 									<li><Link to="/register">Register</Link></li>
 								</ul>
-							</li>
-							<li className="menu-icon"><Link to="/blog-grid">News</Link>
+							</li> */}
+							<li className="menu-icon"><Link to="/blog-grid">Noticias</Link>
 								<ul>
 									<li><Link to="/blog">News</Link></li>
 									<li><Link to="/blog-grid">News Grid</Link></li>
@@ -164,7 +166,7 @@ class Navbar extends Component {
 									<li><Link to="/blog-details">News details</Link></li>
 								</ul>
 							</li>
-							<li className="menu-icon"><Link to="#">Pages</Link>
+							{/* <li className="menu-icon"><Link to="#">Pages</Link>
 								<ul className="mega-menu">
 									<li><a href="#">Inner Pages</a>
 										<ul>
@@ -199,8 +201,8 @@ class Navbar extends Component {
 									<li><Link to="/shop"><img src={publicUrl+"assets/img/banner/menu-banner-1.jpg"} alt="#" /></Link>
 									</li>
 								</ul>
-							</li>
-							<li><Link to="/contact">Contact</Link></li>
+							</li> */}
+							<li><Link to="/contact">Contactános</Link></li>
 							</ul>
 						</div>
 						</nav>
@@ -208,7 +210,7 @@ class Navbar extends Component {
 					</div>
 					<div className="col ltn__header-options ltn__header-options-2 mb-sm-20">
 					{/* header-search-1 */}
-					<div className="header-search-wrap">
+					{/* <div className="header-search-wrap">
 						<div className="header-search-1">
 						<div className="search-icon">
 							<i className="icon-search for-search-show" />
@@ -223,16 +225,26 @@ class Navbar extends Component {
 							</button>
 						</form>
 						</div>
-					</div>
+					</div> */}
 					{/* user-menu */}
 					<div className="ltn__drop-menu user-menu">
 						<ul>
 						<li>
 							<Link to="#"><i className="icon-user" /></Link>
 							<ul className="go-top">
-							<li><Link to="/login">Sign in</Link></li>
-							<li><Link to="/register">Register</Link></li>
-							<li><Link to="/my-account">My Account</Link></li>
+								{user ? (
+									<>
+									<li><Link to="/my-account">Mi Cuenta</Link></li>
+							<li><Link to="/home" onClick={logout}>Cerrar Sesión</Link></li>
+									</>
+								): (
+									<>
+									<li><Link to="/login">Iniciar Sesión</Link></li>
+									<li><Link to="/register">Regístrate</Link></li>
+									</>
+
+								)}
+							
 							</ul>
 						</li>
 						</ul>
@@ -290,7 +302,7 @@ class Navbar extends Component {
 						<li><Link to="/home-v10">Home Style 10</Link></li>
 						</ul>
 						</li>
-						<li><Link to="/about">About</Link>
+						<li><Link to="/about">Sobre Nosotros</Link>
 						<ul className="sub-menu">
 							<li><Link to="/about">About</Link></li>
 							<li><Link to="/service">Services</Link></li>
@@ -304,7 +316,7 @@ class Navbar extends Component {
 							<li><Link to="/location">Google Map Locations</Link></li>
 						</ul>
 						</li>
-						<li><Link to="/shop">Shop</Link>
+						{/* <li><Link to="/shop">Shop</Link>
 						<ul className="sub-menu">
 							<li><Link to="/shop">Shop</Link></li>
 							<li><Link to="/shop-grid">Shop Grid</Link></li>
@@ -317,8 +329,8 @@ class Navbar extends Component {
 							<li><Link to="/login">Sign in</Link></li>
 							<li><Link to="/register">Register</Link></li>
 						</ul>
-						</li>
-						<li><Link to="/blog-grid">News</Link>
+						</li> */}
+						<li><Link to="/blog-grid">Noticias</Link>
 						<ul className="sub-menu">
 							<li><Link to="/blog">News</Link></li>
 							<li><Link to="/blog-grid">News Grid</Link></li>
@@ -327,7 +339,7 @@ class Navbar extends Component {
 							<li><Link to="/blog-details">News details</Link></li>
 						</ul>
 						</li>
-						<li><Link to="#">Pages</Link>
+						{/* <li><Link to="#">Pages</Link>
 							<ul className="sub-menu">
 								<li><Link to="/about">About</Link></li>
 								<li><Link to="/service">Services</Link></li>
@@ -345,8 +357,8 @@ class Navbar extends Component {
 								<li><Link to="/contact">Contact</Link></li>
 								<li><Link to="/coming-soon">Coming Soon</Link></li>
 							</ul>
-                    	</li>
-						<li><Link to="/contact">Contact</Link></li>
+                    	</li> */}
+						<li><Link to="/contact">Contáctanos</Link></li>
 					</ul>
 					</div>
 					<div className="ltn__utilize-buttons ltn__utilize-buttons-2">
@@ -455,7 +467,6 @@ class Navbar extends Component {
 
 		</div>
         )
-    }
 }
 
 

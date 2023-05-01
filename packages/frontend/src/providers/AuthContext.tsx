@@ -13,11 +13,13 @@ type AuthUser = User | null
 interface IAuth {
   user: AuthUser
   updateUser: (user: User | null) => void
+  logout: () => void
 }
 
 const Auth = createContext<IAuth>({
   user: null,
   updateUser: () => {},
+  logout: () => {},
 })
 
 export const useAuth = () => {
@@ -32,10 +34,15 @@ export const useAuth = () => {
 
 const useAuthService = (): IAuth => {
   const [user, setUser] = useState<AuthUser>(null)
+
   const updateUser = useCallback((user: AuthUser) => {
     localStorage.setItem('user', JSON.stringify(user))
     setUser(user)
   }, [])
+
+  const logout = useCallback(() => {
+    updateUser(null)
+  }, [updateUser])
 
   useEffect(() => {
     const preservedUser = localStorage.getItem('user')
@@ -45,6 +52,7 @@ const useAuthService = (): IAuth => {
   return {
     updateUser,
     user,
+    logout,
   }
 }
 

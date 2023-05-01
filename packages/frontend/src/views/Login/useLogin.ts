@@ -25,7 +25,6 @@ const useLogin = () => {
     (params: { email: string; password: string }) => login(params),
     {
       onSuccess: (data) => {
-        console.log(data)
         updateUser(data)
         history.push('/my-account')
       },
