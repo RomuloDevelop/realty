@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import parse from 'html-react-parser';
 
 class BannerV2 extends Component {
 
     render() {
 
         let publicUrl = process.env.PUBLIC_URL+'/'
-        let imagealt = 'image'
 
     return  <div className="ltn__slider-area ltn__slider-11  ltn__slider-11-slide-item-count-show--- ltn__slider-11-pagination-count-show--- section-bg-1">
 			  <div className="ltn__slider-11-inner">
@@ -25,13 +23,13 @@ class BannerV2 extends Component {
 			                        <i className="fa fa-play" />
 			                      </a>
 			                    </div>
-			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Real Estate Agency</h6>
-			                    <h1 className="slide-title animated ">Search and Find <br /><span>Luxury</span> House</h1>
+			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Agencia Inmobiliaria</h6>
+			                    <h1 className="slide-title animated ">Busca y encuentra <br />Casas de <span>Lujo</span></h1>
 			                    <div className="slide-brief animated">
 			                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
 			                    </div>
 			                    <div className="btn-wrapper animated">
-			                      <Link to="/about" className="theme-btn-1 btn btn-effect-1">Make An Enquiry</Link>
+			                      <Link to="/about" className="theme-btn-1 btn btn-effect-1">Realiza una Consulta</Link>
 			                      <a className="ltn__video-play-btn bg-white" href="https://www.youtube.com/embed/HnbMYzdjuBs?autoplay=1&showinfo=0" data-rel="lightcase">
 			                        <i className="icon-play  ltn__secondary-color" />
 			                      </a>
@@ -60,13 +58,13 @@ class BannerV2 extends Component {
 			                      </a>
 			                    </div>
 			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Real Estate Agency</h6>
-			                    <h1 className="slide-title animated ">Find Your Dream <br /> House By Us</h1>
+			                    <h1 className="slide-title animated ">Encuentra Tu Casa <br /> Con Nosotros</h1>
 			                    <div className="slide-brief animated">
 			                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
 			                    </div>
 			                    <div className="btn-wrapper animated">
-			                      <Link to="/service" className="theme-btn-1 btn btn-effect-1">OUR SERVICES</Link>
-			                      <Link to="/about" className="btn btn-transparent btn-effect-3">LEARN MORE</Link>
+			                      <Link to="/service" className="theme-btn-1 btn btn-effect-1">NUESTROS SERVICIOS</Link>
+			                      <Link to="/about" className="btn btn-transparent btn-effect-3">APRENDE MAS</Link>
 			                    </div>
 			                  </div>
 			                </div>
@@ -91,14 +89,14 @@ class BannerV2 extends Component {
 			                        <i className="fa fa-play" />
 			                      </a>
 			                    </div>
-			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Real Estate Agency</h6>
-			                    <h1 className="slide-title animated ">Find Your Dream <br /> House By Us</h1>
+			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Agencia Inmobiliaria</h6>
+			                    <h1 className="slide-title animated ">Encuentra Tu Casa <br /> Con Nosotros</h1>
 			                    <div className="slide-brief animated">
 			                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
 			                    </div>
 			                    <div className="btn-wrapper animated">
-			                      <Link to="/service" className="theme-btn-1 btn btn-effect-1">OUR SERVICES</Link>
-			                      <Link to="/about" className="btn btn-transparent btn-effect-3">LEARN MORE</Link>
+			                      <Link to="/service" className="theme-btn-1 btn btn-effect-1">NUESTROS SERVICIOS</Link>
+			                      <Link to="/about" className="btn btn-transparent btn-effect-3">APRENDE MAS</Link>
 			                    </div>
 			                  </div>
 			                </div>
@@ -123,14 +121,14 @@ class BannerV2 extends Component {
 			                        <i className="fa fa-play" />
 			                      </a>
 			                    </div>
-			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Real Estate Agency</h6>
-			                    <h1 className="slide-title animated ">Find Your Dream <br /> House By Us</h1>
+			                    <h6 className="slide-sub-title white-color--- animated"><span><i className="fas fa-home" /></span> Agencia Inmobiliaria</h6>
+			                    <h1 className="slide-title animated ">Encuentra Tu Casa <br /> Con Nosotros</h1>
 			                    <div className="slide-brief animated">
 			                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
 			                    </div>
 			                    <div className="btn-wrapper animated">
-			                      <Link to="/service" className="theme-btn-1 btn btn-effect-1">OUR SERVICES</Link>
-			                      <Link to="/about" className="btn btn-transparent btn-effect-3">LEARN MORE</Link>
+			                      <Link to="/service" className="theme-btn-1 btn btn-effect-1">NUESTROS SERVICIOS</Link>
+			                      <Link to="/about" className="btn btn-transparent btn-effect-3">APRENDE MAS</Link>
 			                    </div>
 			                  </div>
 			                </div>

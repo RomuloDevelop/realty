@@ -24,8 +24,10 @@ CREATE TABLE "UserRole" (
 CREATE TABLE "Property" (
     "id" SERIAL NOT NULL,
     "agentId" INTEGER,
+    "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "area" INTEGER NOT NULL,
+    "floors" INTEGER NOT NULL,
     "price" DECIMAL(65,30) NOT NULL,
     "latitude" DECIMAL(65,30) NOT NULL,
     "longitude" DECIMAL(65,30) NOT NULL,
@@ -36,10 +38,10 @@ CREATE TABLE "Property" (
     "bedrooms" INTEGER NOT NULL,
     "propertyTypeId" INTEGER NOT NULL,
     "propertyCategoryId" INTEGER NOT NULL,
-    "countyId" INTEGER NOT NULL,
-    "provinceId" INTEGER NOT NULL,
+    "countyFipscode" TEXT NOT NULL,
+    "provinceAbbreviation" TEXT NOT NULL,
     "cityId" INTEGER NOT NULL,
-    "neighbourhoodId" INTEGER NOT NULL,
+    "neighbourhoodId" INTEGER,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Property_pkey" PRIMARY KEY ("id")
@@ -146,16 +148,16 @@ ALTER TABLE "Property" ADD CONSTRAINT "Property_agentId_fkey" FOREIGN KEY ("agen
 ALTER TABLE "Property" ADD CONSTRAINT "Property_propertyTypeId_fkey" FOREIGN KEY ("propertyTypeId") REFERENCES "PropertyType"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Property" ADD CONSTRAINT "Property_countyId_fkey" FOREIGN KEY ("countyId") REFERENCES "County"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Property" ADD CONSTRAINT "Property_countyFipscode_fkey" FOREIGN KEY ("countyFipscode") REFERENCES "County"("fipscode") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Property" ADD CONSTRAINT "Property_provinceId_fkey" FOREIGN KEY ("provinceId") REFERENCES "Province"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Property" ADD CONSTRAINT "Property_provinceAbbreviation_fkey" FOREIGN KEY ("provinceAbbreviation") REFERENCES "Province"("abbreviation") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Property" ADD CONSTRAINT "Property_cityId_fkey" FOREIGN KEY ("cityId") REFERENCES "City"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Property" ADD CONSTRAINT "Property_neighbourhoodId_fkey" FOREIGN KEY ("neighbourhoodId") REFERENCES "Neighbourhood"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Property" ADD CONSTRAINT "Property_neighbourhoodId_fkey" FOREIGN KEY ("neighbourhoodId") REFERENCES "Neighbourhood"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Property" ADD CONSTRAINT "Property_propertyCategoryId_fkey" FOREIGN KEY ("propertyCategoryId") REFERENCES "PropertyCategory"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

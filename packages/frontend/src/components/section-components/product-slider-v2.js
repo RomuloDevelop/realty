@@ -14,8 +14,8 @@ class ProductSliderV2 extends Component {
 			      <div className="col-lg-12">
 			        <div className="section-title-area ltn__section-title-2--- text-center---">
 			          <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Area Properties</h6>
-			          <h1 className="section-title">Find Your Dream House <br />
-			            Search By Area</h1>
+			          <h1 className="section-title">Encuentra Tu Casa Soñada <br />
+			            Busca Por Area</h1>
 			        </div>
 			      </div>
 			    </div>
@@ -26,7 +26,7 @@ class ProductSliderV2 extends Component {
 			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/1.jpg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
-			                <li>2 Properties</li>
+			                <li>2 Propiedades</li>
 			              </ul>
 			            </div>
 			          </div>
@@ -34,7 +34,7 @@ class ProductSliderV2 extends Component {
 			            <h6><Link to="/contact">San Francisco</Link></h6>
 			            <h4><Link to="/product-details">Mission District Area</Link></h4>
 			            <div className="search-by-place-btn">
-			              <Link to="/product-details">View Property <i className="flaticon-right-arrow" /></Link>
+			              <Link to="/product-details">Ver Propiedad <i className="flaticon-right-arrow" /></Link>
 			            </div>
 			          </div>
 			        </div>
@@ -45,7 +45,7 @@ class ProductSliderV2 extends Component {
 			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/2.jpg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
-			                <li>5 Properties</li>
+			                <li>5 Propiedades</li>
 			              </ul>
 			            </div>
 			          </div>
@@ -53,7 +53,7 @@ class ProductSliderV2 extends Component {
 			            <h6><Link to="/contact">New York</Link></h6>
 			            <h4><Link to="/product-details">Pacific Heights Area</Link></h4>
 			            <div className="search-by-place-btn">
-			              <Link to="/product-details">View Property <i className="flaticon-right-arrow" /></Link>
+			              <Link to="/product-details">Ver Propiedad <i className="flaticon-right-arrow" /></Link>
 			            </div>
 			          </div>
 			        </div>
@@ -64,7 +64,7 @@ class ProductSliderV2 extends Component {
 			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/3.jpg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
-			                <li>9 Properties</li>
+			                <li>9 Propiedades</li>
 			              </ul>
 			            </div>
 			          </div>
@@ -72,7 +72,7 @@ class ProductSliderV2 extends Component {
 			            <h6><Link to="/contact">Sedona, Arizona</Link></h6>
 			            <h4><Link to="/product-details">Noe Valley Zones</Link></h4>
 			            <div className="search-by-place-btn">
-			              <Link to="/product-details">View Property <i className="flaticon-right-arrow" /></Link>
+			              <Link to="/product-details">Ver Propiedad <i className="flaticon-right-arrow" /></Link>
 			            </div>
 			          </div>
 			        </div>
@@ -83,7 +83,7 @@ class ProductSliderV2 extends Component {
 			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/2.jpg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
-			                <li>5 Properties</li>
+			                <li>5 propiedades</li>
 			              </ul>
 			            </div>
 			          </div>
@@ -91,7 +91,7 @@ class ProductSliderV2 extends Component {
 			            <h6><Link to="/contact">New York</Link></h6>
 			            <h4><Link to="/product-details">Pacific Heights Area</Link></h4>
 			            <div className="search-by-place-btn">
-			              <Link to="/product-details">View Property <i className="flaticon-right-arrow" /></Link>
+			              <Link to="/product-details">Ver Propiedad <i className="flaticon-right-arrow" /></Link>
 			            </div>
 			          </div>
 			        </div>

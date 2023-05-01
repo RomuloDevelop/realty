@@ -49,11 +49,6 @@ class Footer_v1 extends Component {
 				      <div className="row">
 				        <div className="col-xl-3 col-md-6 col-sm-6 col-12">
 				          <div className="footer-widget footer-about-widget">
-				            <div className="footer-logo">
-				              <div className="site-logo">
-				                <img height={80} src={publicUrl+"assets/img/MILLENIAN-LOGO-FOOTER.png"} alt="Logo" />
-				              </div>
-				            </div>
 				            <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
 				            <div className="footer-address">
 				              <ul>

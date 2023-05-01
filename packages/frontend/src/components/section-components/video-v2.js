@@ -16,35 +16,35 @@ class VideoV2 extends Component {
 			        <div className="about-us-info-wrap">
 			          <div className="section-title-area ltn__section-title-2--- mb-20">
 			            <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Building Facilities</h6>
-			            <h1 className="section-title">Making living spaces
-			              More Beautiful</h1>
-			            <p>Over 39,000 people work for us in more than 70 countries all over the
-			              This breadth of global coverage, combined with specialist services</p>
+			            <h1 className="section-title">Haciendo Espacios de Vivienda
+			              Mas Hermosos</h1>
+			            <p>Más de 39.000 personas trabajan para nosotros en más de 70 países de todo el mundo.
+Esta amplitud de cobertura global, combinada con servicios especializados</p>
 			          </div>
 			          <ul className="ltn__list-item-half ltn__list-item-half-2 list-item-margin clearfix">
 			            <li>
 			              <i className="icon-done" />
-			              Living rooms are pre-wired for Surround
+			              Las salas de estar están pre-cableadas para Surround
 			            </li>
 			            <li>
 			              <i className="icon-done" />
-			              Luxurious interior design and amenities
+			              Lujoso diseño interior y comodidades
 			            </li>
 			            <li>
 			              <i className="icon-done" />
-			              Nestled in the Buckhead Vinings communities
+			              Ubicado en las comunidades de Buckhead Vinings
 			            </li>
 			            <li>
 			              <i className="icon-done" />
-			              Private balconies with stunning views
+			              Balcones privados con impresionantes vistas
 			            </li>
 			            <li>
 			              <i className="icon-done" />
-			              A rare combination of inspired architecture
+			              Una rara combinación de arquitectura inspirada
 			            </li>
 			            <li>
 			              <i className="icon-done" />
-			              Outdoor grilling with dining court
+			              Parrilla al aire libre con comedor
 			            </li>
 			          </ul>
 			          <div className="  ltn__animation-pulse2 text-center mt-30">

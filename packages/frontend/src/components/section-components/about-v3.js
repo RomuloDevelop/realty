@@ -28,17 +28,17 @@ class AboutV3 extends Component {
 			        <div className="about-us-info-wrap">
 			          <div className="section-title-area ltn__section-title-2--- mb-30">
 			            <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">About Us</h6>
-			            <h1 className="section-title">Dream Living Spaces
-			              Setting New Build</h1>
-			            <p>Over 39,000 people work for us in more than 70 countries all over the
-			              This breadth of global coverage, combined with specialist services</p>
+			            <h1 className="section-title">Espacios de ensueño
+						Creando nueva construcción</h1>
+			            <p>Más de 39.000 personas trabajan para nosotros en más de 70 países de todo el mundo.
+						Esta amplitud de cobertura global, combinada con servicios especializados</p>
 			          </div>                        
 			          <div className="ltn__feature-item ltn__feature-item-3">
 			            <div className="ltn__feature-icon">
 			              <span><i className="flaticon-house-4" /></span>
 			            </div>
 			            <div className="ltn__feature-info">
-			              <h4><a href="service-details.html">The Perfect Residency</a></h4>
+			              <h4><a href="service-details.html">La Residencia Perfecta</a></h4>
 			              <p>Lorem ipsum dolor sit amet, consectetur adipisic do eiusmod tempor incididunt ut labore et</p>
 			            </div>
 			          </div>
@@ -47,7 +47,7 @@ class AboutV3 extends Component {
 			              <span><i className="flaticon-call-center-agent" /></span>
 			            </div>
 			            <div className="ltn__feature-info">
-			              <h4><a href="service-details.html">Global Architect Experts</a></h4>
+			              <h4><a href="service-details.html">Expertos de Arquitectura </a></h4>
 			              <p>Lorem ipsum dolor sit amet, consectetur adipisic do eiusmod tempor incididunt ut labore et</p>
 			            </div>
 			          </div>
@@ -56,7 +56,7 @@ class AboutV3 extends Component {
 			              <span><i className="flaticon-maps-and-location" /></span>
 			            </div>
 			            <div className="ltn__feature-info">
-			              <h4><a href="service-details.html">Built-in Storage Cupboards</a></h4>
+			              <h4><a href="service-details.html">Armarios Integrados</a></h4>
 			              <p>Lorem ipsum dolor sit amet, consectetur adipisic do eiusmod tempor incididunt ut labore et</p>
 			            </div>
 			          </div>

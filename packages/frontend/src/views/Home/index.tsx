@@ -21,18 +21,13 @@ const Home = () => {
   return (
     <DefaultLayout>
       <Banner />
+      <InstagramFeed />
       <Aboutv3 />
       <Video />
       <Featuresv1 customClass="ltn__feature-area section-bg-1--- pt-115 pb-90 mb-120---" />
-      <UpComingProduct />
-      <ApartmentV2 />
       <ProductSlider />
-      <Availability />
-      <Neighbour />
-      <Cateogory />
       <Testimonial />
       <BlogSlider customClass="section-subtitle-2" />
-      <InstagramFeed />
     </DefaultLayout>
   )
 }
