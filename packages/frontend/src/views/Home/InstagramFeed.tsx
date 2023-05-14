@@ -16,7 +16,7 @@ const InstagramFeed = () => {
       <div className="row">
         <div className="col-lg-12 instagram-feed-container" id={INSTAGRAM_ID}>
           <iframe
-            src="https://www.juicer.io/api/feeds/romulocorona/iframe"
+            src="https://www.juicer.io/api/feeds/brunorgamarra/iframe"
             className="feed"
           ></iframe>
         </div>
