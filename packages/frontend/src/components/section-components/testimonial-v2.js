@@ -8,7 +8,7 @@ class TestimonialV2 extends Component {
 
         let publicUrl = process.env.PUBLIC_URL+'/'
 
-    return <div className="ltn__testimonial-area section-bg-1--- bg-image-top pt-115 pb-65" data-bs-bg={publicUrl+"assets/img/bg/23.jpg"}>
+    return <div className="ltn__testimonial-area section-bg-1--- bg-image-top pt-115 pb-65" data-bs-bg={publicUrl+"assets/img/home_properties/testimonies.jpg"}>
 			  <div className="container">
 			    <div className="row">
 			      <div className="col-lg-12">

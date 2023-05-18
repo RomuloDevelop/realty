@@ -13,7 +13,7 @@ class AboutV3 extends Component {
 			    <div className="row">
 			      <div className="col-lg-6 align-self-center">
 			        <div className="about-us-img-wrap about-img-left">
-			          <img src={publicUrl+"assets/img/others/11.png"} alt="About Us Image" />
+			          <img src={publicUrl+"assets/img/home_properties/about_us.jpg"} alt="About Us Image" />
 			          <div className="about-us-img-info about-us-img-info-2 about-us-img-info-3 d-none">
 			            <div className="ltn__video-img ltn__animation-pulse1">
 			              <img src={publicUrl+"assets/img/others/8.png"} alt="video popup bg image" />
@@ -27,7 +27,7 @@ class AboutV3 extends Component {
 			      <div className="col-lg-6 align-self-center">
 			        <div className="about-us-info-wrap">
 			          <div className="section-title-area ltn__section-title-2--- mb-30">
-			            <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">About Us</h6>
+			            <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Sobre Nosotros</h6>
 			            <h1 className="section-title">Espacios de ensueño
 						Creando nueva construcción</h1>
 			            <p>Más de 39.000 personas trabajan para nosotros en más de 70 países de todo el mundo.

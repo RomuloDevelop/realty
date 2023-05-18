@@ -23,7 +23,7 @@ class BlogSlider extends Component {
 		      <div className="col-lg-12">
 		        <div className="ltn__blog-item ltn__blog-item-3">
 		          <div className="ltn__blog-img">
-		            <Link to="/blog-details"><img src={publicUrl+"assets/img/blog/1.jpg"} alt="#" /></Link>
+		            <Link to="/blog-details"><img src={publicUrl+"assets/img/home_properties/property1.jpg"} alt="#" /></Link>
 		          </div>
 		          <div className="ltn__blog-brief">
 		            <div className="ltn__blog-meta">
@@ -55,7 +55,7 @@ class BlogSlider extends Component {
 		      <div className="col-lg-12">
 		        <div className="ltn__blog-item ltn__blog-item-3">
 		          <div className="ltn__blog-img">
-		            <Link to="/blog-details"><img src={publicUrl+"assets/img/blog/2.jpg"} alt="#" /></Link>
+		            <Link to="/blog-details"><img src={publicUrl+"assets/img/home_properties/property2.jpg"} alt="#" /></Link>
 		          </div>
 		          <div className="ltn__blog-brief">
 		            <div className="ltn__blog-meta">
@@ -87,7 +87,7 @@ class BlogSlider extends Component {
 		      <div className="col-lg-12">
 		        <div className="ltn__blog-item ltn__blog-item-3">
 		          <div className="ltn__blog-img">
-		            <Link to="/blog-details"><img src={publicUrl+"assets/img/blog/3.jpg"} alt="#" /></Link>
+		            <Link to="/blog-details"><img src={publicUrl+"assets/img/home_properties/property3.jpg"} alt="#" /></Link>
 		          </div>
 		          <div className="ltn__blog-brief">
 		            <div className="ltn__blog-meta">
@@ -119,7 +119,7 @@ class BlogSlider extends Component {
 		      <div className="col-lg-12">
 		        <div className="ltn__blog-item ltn__blog-item-3">
 		          <div className="ltn__blog-img">
-		            <Link to="/blog-details"><img src={publicUrl+"assets/img/blog/4.jpg"} alt="#" /></Link>
+		            <Link to="/blog-details"><img src={publicUrl+"assets/img/home_properties/property4.jpg"} alt="#" /></Link>
 		          </div>
 		          <div className="ltn__blog-brief">
 		            <div className="ltn__blog-meta">
@@ -151,7 +151,7 @@ class BlogSlider extends Component {
 		      <div className="col-lg-12">
 		        <div className="ltn__blog-item ltn__blog-item-3">
 		          <div className="ltn__blog-img">
-		            <Link to="/blog-details"><img src={publicUrl+"assets/img/blog/5.jpg"} alt="#" /></Link>
+		            <Link to="/blog-details"><img src={publicUrl+"assets/img/home_properties/property2.jpg"} alt="#" /></Link>
 		          </div>
 		          <div className="ltn__blog-brief">
 		            <div className="ltn__blog-meta">

@@ -15,7 +15,7 @@ class VideoV2 extends Component {
 			      <div className="col-lg-6 align-self-center">
 			        <div className="about-us-info-wrap">
 			          <div className="section-title-area ltn__section-title-2--- mb-20">
-			            <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Building Facilities</h6>
+			            <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Instalaciones del edificio</h6>
 			            <h1 className="section-title">Haciendo Espacios de Vivienda
 			              Mas Hermosos</h1>
 			            <p>Más de 39.000 personas trabajan para nosotros en más de 70 países de todo el mundo.
@@ -56,6 +56,7 @@ Esta amplitud de cobertura global, combinada con servicios especializados</p>
 			      </div>
 			      <div className="col-lg-6 align-self-center">
 			        <div className="about-us-img-wrap about-img-left">
+						{/* <img style={{"aspect-ratio": 871 / 773}} src={publicUrl+"assets/img/home_properties/property4.jpg"} alt="Flower Image" /> */}
 			        </div>
 			      </div>
 			    </div>

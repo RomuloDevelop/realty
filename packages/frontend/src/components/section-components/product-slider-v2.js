@@ -13,7 +13,7 @@ class ProductSliderV2 extends Component {
 			    <div className="row">
 			      <div className="col-lg-12">
 			        <div className="section-title-area ltn__section-title-2--- text-center---">
-			          <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Area Properties</h6>
+			          <h6 className="section-subtitle section-subtitle-2--- ltn__secondary-color">Area de propiedades</h6>
 			          <h1 className="section-title">Encuentra Tu Casa Soñada <br />
 			            Busca Por Area</h1>
 			        </div>
@@ -23,7 +23,7 @@ class ProductSliderV2 extends Component {
 			      <div className="col-lg-4">
 			        <div className="ltn__search-by-place-item">
 			          <div className="search-by-place-img">
-			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/1.jpg"} alt="#" /></Link>
+			            <Link to="/product-details"><img src={publicUrl+"assets/img/home_properties/lake_tree.jpeg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
 			                <li>2 Propiedades</li>
@@ -42,7 +42,7 @@ class ProductSliderV2 extends Component {
 			      <div className="col-lg-4">
 			        <div className="ltn__search-by-place-item">
 			          <div className="search-by-place-img">
-			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/2.jpg"} alt="#" /></Link>
+			            <Link to="/product-details"><img src={publicUrl+"assets/img/home_properties/lake.jpeg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
 			                <li>5 Propiedades</li>
@@ -61,7 +61,7 @@ class ProductSliderV2 extends Component {
 			      <div className="col-lg-4">
 			        <div className="ltn__search-by-place-item">
 			          <div className="search-by-place-img">
-			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/3.jpg"} alt="#" /></Link>
+			            <Link to="/product-details"><img src={publicUrl+"assets/img/home_properties/tree.jpeg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
 			                <li>9 Propiedades</li>
@@ -80,7 +80,7 @@ class ProductSliderV2 extends Component {
 			      <div className="col-lg-4">
 			        <div className="ltn__search-by-place-item">
 			          <div className="search-by-place-img">
-			            <Link to="/product-details"><img src={publicUrl+"assets/img/product-3/2.jpg"} alt="#" /></Link>
+			            <Link to="/product-details"><img src={publicUrl+"assets/img/home_properties/lake_tree.jpeg"} alt="#" /></Link>
 			            <div className="search-by-place-badge">
 			              <ul>
 			                <li>5 propiedades</li>

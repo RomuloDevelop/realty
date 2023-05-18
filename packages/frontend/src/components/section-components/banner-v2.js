@@ -37,7 +37,7 @@ class BannerV2 extends Component {
 			                  </div>
 			                </div>
 			                <div className="slide-item-img">
-			                  <img src={publicUrl+"assets/img/slider/61.jpg"} alt="#" />
+			                  <img src={publicUrl+"assets/img/home_properties/property1.jpg"} alt="#" />
 			                </div>
 			              </div>
 			            </div>
@@ -69,7 +69,7 @@ class BannerV2 extends Component {
 			                  </div>
 			                </div>
 			                <div className="slide-item-img">
-			                  <img src={publicUrl+"assets/img/slider/62.jpg"} alt="#" />
+			                  <img src={publicUrl+"assets/img/home_properties/property2.jpg"} alt="#" />
 			                </div>
 			              </div>
 			            </div>
@@ -101,7 +101,7 @@ class BannerV2 extends Component {
 			                  </div>
 			                </div>
 			                <div className="slide-item-img">
-			                  <img src={publicUrl+"assets/img/slider/63.jpg"} alt="#" />
+			                  <img src={publicUrl+"assets/img/home_properties/property3.jpg"} alt="#" />
 			                </div>
 			              </div>
 			            </div>
@@ -133,7 +133,7 @@ class BannerV2 extends Component {
 			                  </div>
 			                </div>
 			                <div className="slide-item-img">
-			                  <img src={publicUrl+"assets/img/slider/64.jpg"} alt="#" />
+			                  <img src={publicUrl+"assets/img/home_properties/property4.jpg"} alt="#" />
 			                </div>
 			              </div>
 			            </div>
@@ -159,16 +159,16 @@ class BannerV2 extends Component {
 			      <div className="ltn__slider-11-img-slide-arrow-inner">
 			        <div className="ltn__slider-11-img-slide-arrow-active">
 			          <div className="image-slide-item">
-			            <img src={publicUrl+"assets/img/slider/61.jpg"} alt="Flower Image" />
+			            <img src={publicUrl+"assets/img/home_properties/property1.jpg"} alt="Flower Image" />
 			          </div>
 			          <div className="image-slide-item">
-			            <img src={publicUrl+"assets/img/slider/62.jpg"} alt="Flower Image" />
+			            <img src={publicUrl+"assets/img/home_properties/property2.jpg"} alt="Flower Image" />
 			          </div>
 			          <div className="image-slide-item">
-			            <img src={publicUrl+"assets/img/slider/63.jpg"} alt="Flower Image" />
+			            <img src={publicUrl+"assets/img/home_properties/property3.jpg"} alt="Flower Image" />
 			          </div>
 			          <div className="image-slide-item">
-			            <img src={publicUrl+"assets/img/slider/64.jpg"} alt="Flower Image" />
+			            <img src={publicUrl+"assets/img/home_properties/property4.jpg"} alt="Flower Image" />
 			          </div>
 			        </div>
 			        {/* slider-4-slide-item-count */}
